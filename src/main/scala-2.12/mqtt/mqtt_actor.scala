@@ -1,0 +1,3 @@
+class MqttActor extend Actor {
+  
+}
