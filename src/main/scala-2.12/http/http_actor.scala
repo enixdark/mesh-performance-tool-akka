@@ -1,3 +1,0 @@
-class HttpActor extend Actor {
-  
-}
