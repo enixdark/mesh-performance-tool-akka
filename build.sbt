@@ -23,6 +23,8 @@ libraryDependencies ++= Seq(
   "com.github.scopt" % "scopt_2.12" % "3.6.0",
   "com.github.tototoshi" %% "scala-csv" % "1.3.4",
   "com.fasterxml.jackson.dataformat" % "jackson-dataformat-yaml" % "2.8.9",
-  "com.fasterxml.jackson.core" % "jackson-databind" % "2.8.9"
+  "com.fasterxml.jackson.core" % "jackson-databind" % "2.8.9",
+  "com.typesafe.akka" % "akka-slf4j_2.12" % "2.5.3",
+  "ch.qos.logback" % "logback-classic" % "1.2.3" % "test"
 
 )
