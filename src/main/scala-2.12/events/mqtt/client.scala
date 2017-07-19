@@ -2,18 +2,29 @@ package events.mqtt
 
 import org.eclipse.paho.client.mqttv3._
 import java.net.URI
+import java.util
+import java.util.UUID
 
 import akka.event.Logging
 import akka.event.LoggingAdapter
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.UUIDGenerator
 
 
 class Client(uri: String, topic: String, qos: Int = 0, log: LoggingAdapter) {
   var mqtt_client: MqttClient = null //MqttAsyncClient = null
-  def connect: Client = {
+
+
+  /**
+    * call a connection to mqtt with sync
+    * return Client's instance
+    *
+    */
+  def connect(random_id: Boolean = false): Client = {
     val _uri = new URI(uri)
     val username = _uri.getUserInfo().split(":")(0)
     val password = _uri.getUserInfo().split(":")(1)
-    this.mqtt_client = new MqttClient(uri, username)
+    val id = if (random_id == true) util.UUID.randomUUID.toString else username
+    this.mqtt_client = new MqttClient(uri, id)
     val opts: MqttConnectOptions = new MqttConnectOptions()
     opts.setCleanSession(false)
     opts.setUserName(username)
